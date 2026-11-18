@@ -1,4 +1,4 @@
-package cl.duoc.test.api;
+package cl.duoc.test.controller;
 import cl.duoc.test.api.Dtos.NamedResponse;
 import cl.duoc.test.repository.CourseRepository;
 import cl.duoc.test.repository.SubjectRepository;
