@@ -16,7 +16,7 @@ import java.util.List;
  @Bean PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder();}
  @Bean SecurityFilterChain security(HttpSecurity http,BearerTokenFilter filter)throws Exception{
   return http.csrf(csrf->csrf.disable()).cors(cors->{}).sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-   .authorizeHttpRequests(a->a.requestMatchers("/api/auth/**","/api/courses","/api/subjects").permitAll().anyRequest().authenticated())
+   .authorizeHttpRequests(a->a.requestMatchers("/api/auth/**","/api/courses","/api/subjects","/api/guardian/**").permitAll().anyRequest().authenticated())
    .addFilterBefore(filter,UsernamePasswordAuthenticationFilter.class).build();
  }
  @Bean CorsConfigurationSource corsConfigurationSource(){CorsConfiguration c=new CorsConfiguration();c.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:8081"));c.setAllowedMethods(List.of("GET","POST","PATCH","DELETE","OPTIONS"));c.setAllowedHeaders(List.of("Content-Type","Authorization"));UrlBasedCorsConfigurationSource s=new UrlBasedCorsConfigurationSource();s.registerCorsConfiguration("/api/**",c);return s;}
